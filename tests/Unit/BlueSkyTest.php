@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Models\BlueSky;
+use App\Http\Controllers\WeatherController;
 use App\Constants\Constants;
 use Carbon\Carbon;
 use Tests\TestCase;
@@ -16,8 +16,8 @@ class BlueSkyTest extends TestCase
     {
         parent::setUp();
 
-        $this->blueSky = new BlueSky();
-        $this->reply = $this->blueSky->getWeather(
+        $this->weather = new WeatherController();
+        $this->reply = $this->weather->getWeather(
             Constants::DEFAULT_LAT,
             Constants::DEFAULT_LONG,
             Constants::BLUESKY_PARAMS
