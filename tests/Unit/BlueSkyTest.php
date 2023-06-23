@@ -2,26 +2,25 @@
 
 namespace Tests\Unit;
 
-use App\Models\StormGlass;
+use App\Models\BlueSky;
 use App\Constants\Constants;
 use Carbon\Carbon;
 use Tests\TestCase;
 
-class StormGlassFutureTest extends TestCase
+class BlueSkyTest extends TestCase
 {
-    private $stormGlass;
+    private $blueSky;
     private $reply;
 
     protected function setUp(): void
     {
         parent::setUp();
-        
-        $this->stormGlass = new StormGlass();
-        $this->reply = $this->stormGlass->getFutureWeather(
+
+        $this->blueSky = new BlueSky();
+        $this->reply = $this->blueSky->getWeather(
             Constants::DEFAULT_LAT,
             Constants::DEFAULT_LONG,
-            Constants::STORMGLASS_PARAMS,
-            Carbon::now()->addDay()
+            Constants::BLUESKY_PARAMS
         );
     }
 
