@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import TextInput from "@/Components/TextInput.vue";
 </script>
 
 <template>
@@ -21,13 +22,15 @@ import { Head } from '@inertiajs/vue3';
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="float-left w-50">
                                 <div class="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2">
-                                    <span>Location: </span><span class="font-bold">Current Location</span><span class="font-bold"><button type="submit" class="btn btn-outline-primary">Add to Favourites</button></span>
+                                    <span class="font-bold">Favourites List:</span>
                                 </div>
                             </div>
                             <div class="float-right w-50">
                                 <div class="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2">
-                                    <span class="font-bold">Weather info</span>
-
+                                    <text-input class="">Weather info:</text-input>
+                                    <div class="">
+                                        Search above for your required location and select.
+                                    </div>
                                 </div>
                             </div>
                         </div>
