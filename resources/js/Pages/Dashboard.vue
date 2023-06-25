@@ -2,14 +2,15 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import TextInput from "@/Components/TextInput.vue";
+
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Weather" />
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Weather</h2>
         </template>
 
         <div class="py-12">
@@ -27,8 +28,9 @@ import TextInput from "@/Components/TextInput.vue";
                             </div>
                             <div class="float-right w-50">
                                 <div class="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2">
-                                    <text-input class="">Weather info:</text-input>
-                                    <div class="">
+                                    <text-input class="p-2" placeholder="Search Location...." v-on:keyup="console.log('test')" modelValue=""></text-input>
+
+                                    <div class="p-2">
                                         Search above for your required location and select.
                                     </div>
                                 </div>
@@ -37,7 +39,7 @@ import TextInput from "@/Components/TextInput.vue";
                     </div>
                     <div class="float-right w-50">
                         <div class="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2">
-                            <span class="font-bold">Weather info</span>
+                            <span class="font-bold">Weather info:</span>
 
                         </div>
                     </div>
