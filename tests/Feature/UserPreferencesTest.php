@@ -12,7 +12,7 @@ class UserPreferencesTest extends TestCase
     /**
      * @return void
      */
-    public function test_if_favourite_structures_exists(): void
+    public function test_if_preference_structures_exists(): void
     {
         $preference = Preference::factory()->create();
         $this->assertInstanceOf(Preference::class, $preference);
@@ -21,7 +21,7 @@ class UserPreferencesTest extends TestCase
     /**
      * @return void
      */
-    public function test_if_favourite_can_be_saved(): void
+    public function test_if_preference_can_be_saved(): void
     {
         $user = User::factory()->create();
         Preference::factory()->create(
@@ -36,7 +36,7 @@ class UserPreferencesTest extends TestCase
     /**
      * @return void
      */
-    public function test_if_favourite_can_be_retrieved_with_correct_data(): void
+    public function test_if_preference_can_be_retrieved_with_correct_data(): void
     {
         $data = json_encode(
             [

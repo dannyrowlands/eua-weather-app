@@ -3,26 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Constants\Constants;
+
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use RakibDevs\Weather\Weather;
 
 class WeatherController extends Controller
 {
-    public function getWeather($lat, $lng, $forecast_distances) : array
+    public function weatherLookup(Request $request, $city)
     {
-        try {
-            $response = Http::withHeaders([
-                'Authorization' =>  Constants::BLUESKY_AUTHORISATION_TOKEN,
-            ])->get(Constants::BLUESKY_API_URL, [
-                'lat' => $lat,
-                'lon' => $lng,
-                'forecast_distances' => $forecast_distances
-            ]);
-
-            return $response->json();
-        } catch (\Exception $e) {
-            Log::error('Error thrown in function :: '.__FUNCTION__.' in class '.__CLASS__.' in file '.__FILE__.' ERROR THROWN ::'.$e->getMessage());
-            return [];
-        }
+        $this->wt = new Weather();
+        $cords = $this->wt->getGeoByCity($city);
+        return $this->wt->getOneCallByCord($cords[0]->lat, $cords[0]->lon);
     }
 }
