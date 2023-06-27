@@ -22,6 +22,15 @@ class Preference extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'data' => 'array',
+    ];
+
+    /**
      * @return HasOne
      */
     public function user(): HasOne

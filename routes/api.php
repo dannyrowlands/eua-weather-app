@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\FavouriteController;
 use Illuminate\Http\Request;
@@ -24,3 +25,4 @@ Route::get('/weather/{city}', [WeatherController::class, 'weatherLookup'])->name
 Route::get('/favourites', [FavouriteController::class, 'list'])->name('favourite.list');
 Route::post('/favourite', [FavouriteController::class, 'store'])->name('favourite.add');
 Route::delete('/favourite', [FavouriteController::class, 'delete'])->name('favourite.delete');
+Route::post('/email-toggle', [EmailController::class, 'toggle'])->name('email.toggle');
