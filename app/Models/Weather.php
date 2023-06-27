@@ -9,21 +9,19 @@ use Illuminate\Support\Facades\Log;
 
 class Weather extends Model
 {
-    public static function getWeather($lat, $lng, $forecast_distances = []) : array
+    public static function getWeather($city) : \stdClass
     {
         try {
-            $response = Http::withHeaders([
-                'Authorization' =>  Constants::BLUESKY_AUTHORISATION_TOKEN,
-            ])->get(Constants::BLUESKY_API_URL, [
-                'lat' => $lat,
-                'lon' => $lng,
-                'forecast_distances' => $forecast_distances
-            ]);
+            $wt = new \RakibDevs\Weather\Weather();
+            $cords = $wt->getGeoByCity($city);
 
-            return $response->json();
+            if(isset($cords[0])) {
+                return $wt->getOneCallByCord($cords[0]->lat, $cords[0]->lon);
+            }
+            return new \stdClass();
         } catch (\Exception $e) {
             Log::error('Error thrown in function :: '.__FUNCTION__.' in class '.__CLASS__.' in file '.__FILE__.' ERROR THROWN ::'.$e->getMessage());
-            return [];
+            return new \stdClass();
         }
     }
 }
