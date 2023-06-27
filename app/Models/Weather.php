@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Constants\Constants;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class Weather extends Model

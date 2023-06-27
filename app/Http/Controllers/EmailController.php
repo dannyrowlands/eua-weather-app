@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Constants\Constants;
-
-
-use App\Models\Favourite;
 use App\Models\Preference;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Collection;
 
 class EmailController extends Controller
 {
-
     /**
      * @param Request $request
      * @return

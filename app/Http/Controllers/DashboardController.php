@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Constants\Constants;
 use App\Models\Favourite;
 use App\Models\Preference;
 use App\Models\Weather;
