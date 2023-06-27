@@ -1,4 +1,6 @@
-import dayjs from "dayjs";
+import dayjs from "dayjs"
+import AdvancedFormat from 'dayjs/plugin/advancedFormat'
+
 export default function WeatherDisplay(incomingData) {
 
     const capitalizeFirst = str => {
@@ -9,12 +11,28 @@ export default function WeatherDisplay(incomingData) {
     const sunrise = new Date(incomingData.weatherData.sunrise)
     const sunset = new Date(incomingData.weatherData.sunset)
 
+    dayjs.extend(AdvancedFormat)
+
     return (
         <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2 flex-wrap">
-            <div className="font-bold">Detailed Forecast:</div>
-            <div className="col-12">
-                Date: {dayjs(date).format('DD-MM-YYYY')}
-            </div>
+            {typeof incomingData.weatherData.weather !== 'undefined' &&
+                <div>
+                    <div className="font-bold">Outlook Summary for {dayjs(date).format('Do MMM YYYY')}</div>
+                    <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2 flex-wrap row">
+                        <div className="col-12">
+                            <img src={'https://openweathermap.org/img/wn/'+incomingData.weatherData.weather[0].icon+'@2x.png'}/>
+                        </div>
+                        <div className="col-12">
+                            {capitalizeFirst(incomingData.weatherData.weather[0].main)}
+                        </div>
+                        <div className="col-12 pb-6">
+                            {capitalizeFirst(incomingData.weatherData.weather[0].description)}
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div className="font-bold">Detail</div>
             <div className="col-12">
                 Sun Rise: {dayjs(sunrise).format('H:mm')}
             </div>
@@ -45,23 +63,6 @@ export default function WeatherDisplay(incomingData) {
             <div className="col-6 pb-6">
                 UV Index: {incomingData.weatherData.uvi}
             </div>
-
-            {typeof incomingData.weatherData.weather !== 'undefined' &&
-                <div>
-                    <div className="font-bold">Outlook Summary:</div>
-                    <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2 flex-wrap row">
-                        <div className="col-12">
-                            {capitalizeFirst(incomingData.weatherData.weather[0].main)}
-                        </div>
-                        <div className="col-12">
-                            {capitalizeFirst(incomingData.weatherData.weather[0].description)}
-                        </div>
-                        <div className="col-4">
-                            <img src={'https://openweathermap.org/img/wn/'+incomingData.weatherData.weather[0].icon+'@2x.png'}/>
-                        </div>
-                    </div>
-                </div>
-            }
         </div>
     );
 };

@@ -139,7 +139,7 @@ export default function Dashboard({ auth, data }) {
                             <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-2 m-2">
                                 <div className="">
                                     <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2">
-                                        <div className="font-bold w-100">Favourites:</div>
+                                        <div className="font-bold w-100">Favourites</div>
                                         <div className="sm:max-w-sm row">
 
 
