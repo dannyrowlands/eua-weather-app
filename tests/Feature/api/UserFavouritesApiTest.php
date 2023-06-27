@@ -44,6 +44,6 @@ class UserFavouritesApiTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        $this->assertTrue($user->favourites[0]->data === 'FeatureTestData');
+        $this->assertTrue($user->favourites[0]->data === 'Test City');
     }
 }

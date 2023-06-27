@@ -108,7 +108,13 @@ console.log('DATA::',data)
                                                 {Object.keys(favouriteList).map((value, index) => {
                                                     let listValues = Object.values(favouriteList)[value];
 
-                                                        return  <li key={index}>{listValues['data']}</li>
+                                                        return  <li key={index}>
+                                                            <form onSubmit={handleSubmit}>
+                                                                <input type="hidden" name="city" value={listValues['data']}></input>
+                                                                <input type="submit" className="btn btn-outline-primary m-2" value={listValues['data']}/>
+                                                            </form>
+
+                                                        </li>
 
                                                 })}
                                             </ul>
