@@ -17,29 +17,30 @@ export default function Dashboard({ auth, data }) {
     const [favouriteList, setFavouriteList] = useState(data.favouriteList)
     const [emailState, setEmailState] = useState(data.emailState)
     const [tabIndex, setTabIndex] = useState(0)
+    const [dayList, setDayList] = useState([])
 
     const capitalizeFirst = str => {
         return str.charAt(0).toUpperCase() + str.slice(1)
     };
 
-    let dayList = ['Mon','Tue','Wed','Thurs','Fri','Sat','Sun','Mon']
-
-    if(typeof weatherData.daily !== 'undefined') {
-        let dayList = []
-        weatherData.daily.map(
-            data => (
-                dayList.push(new Date(data.dt).toLocaleDateString('en-UK', {
-                    weekday: 'short'
-                }))
-            ))
-    }
-
     useEffect(() => {
+        getDays()
         getList()
     }, []);
 
-    useEffect(() => {
-    }, [tabIndex]);
+    function getDays()
+    {
+        if(typeof weatherData.daily !== 'undefined') {
+            const dayArray = []
+            weatherData.daily.map(
+                data => (
+                    dayArray.push(new Date(data.dt).toLocaleDateString('en-UK', {
+                        weekday: 'short'
+                    }))
+                ))
+            setDayList(dayArray)
+        }
+    }
 
     function getList()
     {
@@ -56,7 +57,6 @@ export default function Dashboard({ auth, data }) {
     }
 
     function handleSubmit(event) {
-        // Prevent default behavior
         event.preventDefault();
 
         const formData = new FormData(event.target);
@@ -175,7 +175,7 @@ export default function Dashboard({ auth, data }) {
                         </div>
                         <div className="col-6">
                             <div className="row p-2">
-                                {typeof weatherData.daily !== 'undefined' &&
+                                {typeof weatherData.daily !== 'undefined' && dayList.length > 0 &&
                                     <Tabs defaultIndex={0} onSelect={(index, last, event ) => setTabIndex(event.target.value)}>
                                         <TabList>
                                             {
