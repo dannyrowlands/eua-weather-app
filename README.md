@@ -1,7 +1,3 @@
-Friday, 23 June 2023
-
-I have spent a couple of days going over this task and implementing.  I hope it has all the expected functionality.  I believe I have covered all that was requested within the specification.  I have used Laravel with Sail, Breeze and Inertia.  Inertia allows us to utilise the full power of React within Laravel.
-
 To run….
 
 Pull **master** from the repo.
