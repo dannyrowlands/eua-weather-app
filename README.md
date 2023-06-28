@@ -12,7 +12,7 @@ Run **composer install**
  
 Run **npm install**
 
-Then once deps have been installed you should be able to view the front end by running rpm run dev or npm run build.
+Then once deps have been installed you should be able to view the front end by running **npm run dev** or **npm run build**.
 
 Access the application at http://localhost
 
