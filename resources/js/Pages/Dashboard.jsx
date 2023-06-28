@@ -167,7 +167,7 @@ export default function Dashboard({ auth, data }) {
                                             <input type="submit" className="btn btn-outline-primary m-2" value="Get Weather"/>
                                         </form>
                                         <div>
-                                            Search above for your required location and select.
+                                            Enter name above for your required location.
                                         </div>
                                     </div>
                                 </div>
