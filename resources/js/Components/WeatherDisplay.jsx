@@ -2,7 +2,7 @@ import dayjs from "dayjs"
 import AdvancedFormat from 'dayjs/plugin/advancedFormat'
 
 export default function WeatherDisplay(data) {
-console.log(data.weatherData, data.tabId)
+
     const capitalizeFirst = str => {
         return str.charAt(0).toUpperCase() + str.slice(1)
     };
