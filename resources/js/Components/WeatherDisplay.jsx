@@ -1,32 +1,32 @@
 import dayjs from "dayjs"
 import AdvancedFormat from 'dayjs/plugin/advancedFormat'
 
-export default function WeatherDisplay(incomingData) {
-
+export default function WeatherDisplay(data) {
+console.log(data.weatherData, data.tabId)
     const capitalizeFirst = str => {
         return str.charAt(0).toUpperCase() + str.slice(1)
     };
 
-    const date = new Date(incomingData.weatherData.dt)
-    const sunrise = new Date(incomingData.weatherData.sunrise)
-    const sunset = new Date(incomingData.weatherData.sunset)
+    const date = new Date(data.weatherData.dt)
+    const sunrise = new Date(data.weatherData.sunrise)
+    const sunset = new Date(data.weatherData.sunset)
 
     dayjs.extend(AdvancedFormat)
 
     return (
         <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2 flex-wrap">
-            {typeof incomingData.weatherData.weather !== 'undefined' &&
+            {typeof data.weatherData.weather !== 'undefined' &&
                 <div>
                     <div className="font-bold">Outlook Summary for {dayjs(date).format('Do MMM YYYY')}</div>
                     <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2 flex-wrap row">
                         <div className="col-12">
-                            <img src={'https://openweathermap.org/img/wn/'+incomingData.weatherData.weather[0].icon+'@2x.png'}/>
+                            <img src={'https://openweathermap.org/img/wn/'+data.weatherData.weather[0].icon+'@2x.png'}/>
                         </div>
                         <div className="col-12">
-                            {capitalizeFirst(incomingData.weatherData.weather[0].main)}
+                            {capitalizeFirst(data.weatherData.weather[0].main)}
                         </div>
                         <div className="col-12 pb-6">
-                            {capitalizeFirst(incomingData.weatherData.weather[0].description)}
+                            {capitalizeFirst(data.weatherData.weather[0].description)}
                         </div>
                     </div>
                 </div>
@@ -41,28 +41,28 @@ export default function WeatherDisplay(incomingData) {
                     Sun Set: {dayjs(sunset).format('H:mm')}
                 </div>
                 <div className="col-12">
-                    Temperature Day: {incomingData.weatherData.temp.day} C
+                    Temperature Day: {data.weatherData.temp.day} C
                 </div>
                 <div className="col-12">
-                    Temperature Evening: {incomingData.weatherData.temp.eve} C
+                    Temperature Evening: {data.weatherData.temp.eve} C
                 </div>
                 <div className="col-12">
-                    Pressure: {incomingData.weatherData.pressure}
+                    Pressure: {data.weatherData.pressure}
                 </div>
                 <div className="col-12">
-                    Rain: {incomingData.weatherData.rain}%
+                    Rain: {data.weatherData.rain}%
                 </div>
                 <div className="col-6">
-                    Wind Speed: {incomingData.weatherData.wind_speed} mph
+                    Wind Speed: {data.weatherData.wind_speed} mph
                 </div>
                 <div className="col-6">
-                    Wind Direction: {incomingData.weatherData.wind_deg}
+                    Wind Direction: {data.weatherData.wind_deg}
                 </div>
                 <div className="col-6">
-                    Wind Gusts: {incomingData.weatherData.wind_gust} mph
+                    Wind Gusts: {data.weatherData.wind_gust} mph
                 </div>
                 <div className="col-6 pb-6">
-                    UV Index: {incomingData.weatherData.uvi}
+                    UV Index: {data.weatherData.uvi}
                 </div>
             </div>
         </div>

@@ -182,35 +182,35 @@ export default function Dashboard({ auth, data }) {
                                                 dayList.map(
                                                     (value, index) => (
                                                             <Tab value={index} key={index}>
-                                                                {value}
+                                                                {index === 0 ? 'Today' : value}
                                                             </Tab>
                                                     )
                                                 )
                                             }
                                         </TabList>
                                         <TabPanel>
-                                            <WeatherDisplay weatherData={weatherData.daily[0]}></WeatherDisplay>
+                                            <WeatherDisplay tabId={1} weatherData={weatherData.daily[0]}></WeatherDisplay>
                                         </TabPanel>
                                         <TabPanel>
-                                            <WeatherDisplay weatherData={weatherData.daily[1]}></WeatherDisplay>
+                                            <WeatherDisplay tabId={2} weatherData={weatherData.daily[1]}></WeatherDisplay>
                                         </TabPanel>
                                         <TabPanel>
-                                            <WeatherDisplay weatherData={weatherData.daily[2]}></WeatherDisplay>
+                                            <WeatherDisplay tabId={3} weatherData={weatherData.daily[2]}></WeatherDisplay>
                                         </TabPanel>
                                         <TabPanel>
-                                            <WeatherDisplay weatherData={weatherData.daily[3]}></WeatherDisplay>
+                                            <WeatherDisplay tabId={4} weatherData={weatherData.daily[3]}></WeatherDisplay>
                                         </TabPanel>
                                         <TabPanel>
-                                            <WeatherDisplay weatherData={weatherData.daily[4]}></WeatherDisplay>
+                                            <WeatherDisplay tabId={5} weatherData={weatherData.daily[4]}></WeatherDisplay>
                                         </TabPanel>
                                         <TabPanel>
-                                            <WeatherDisplay weatherData={weatherData.daily[5]}></WeatherDisplay>
+                                            <WeatherDisplay tabId={6} weatherData={weatherData.daily[5]}></WeatherDisplay>
                                         </TabPanel>
                                         <TabPanel>
-                                            <WeatherDisplay weatherData={weatherData.daily[6]}></WeatherDisplay>
+                                            <WeatherDisplay tabId={7} weatherData={weatherData.daily[6]}></WeatherDisplay>
                                         </TabPanel>
                                         <TabPanel>
-                                            <WeatherDisplay weatherData={weatherData.daily[7]}></WeatherDisplay>
+                                            <WeatherDisplay tabId={8} weatherData={weatherData.daily[7]}></WeatherDisplay>
                                         </TabPanel>
                                     </Tabs>
                                 }
