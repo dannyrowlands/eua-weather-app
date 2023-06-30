@@ -124,11 +124,11 @@ export default function Dashboard({ auth, data }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg row">
-                        <div className="col-6 p-2">
-                            <div className="row border-gray-400 overflow-hidden shadow-sm sm:rounded-lg m-2 p-2 col-12">
-                                <div className="col-4 font-bold"></div>
-                                <div className="col-4 h3">{capitalizeFirst(cityName)}</div>
-                                <div className="font-bold col-4">
+                        <div className="col-sm p-2">
+                            <div className="row border-gray-400 overflow-hidden shadow-sm sm:rounded-lg m-2 p-2">
+                                <div className="col-sm font-bold"></div>
+                                <div className="col-sm h3">{capitalizeFirst(cityName)}</div>
+                                <div className="font-bold col-sm">
                                     <form onSubmit={addFavourite}>
                                         <input type="hidden" name="favourite" value={cityName}/>
                                         <input type="hidden" name="user_id" value={auth.user.id}/>
@@ -146,7 +146,7 @@ export default function Dashboard({ auth, data }) {
                                                 {Object.keys(favouriteList).map((value, index) => {
                                                     let listValues = Object.values(favouriteList)[value];
 
-                                                        return  <div className="col-4" key={listValues['id']}>
+                                                        return  <div className="col-sm" key={listValues['id']}>
                                                             <form onSubmit={handleSubmit}>
                                                                 <input type="hidden" name="city" value={listValues['data']}></input>
                                                                 <input type="submit" className="btn btn-outline-primary m-2" value={capitalizeFirst(listValues['data'])}/>
@@ -160,20 +160,26 @@ export default function Dashboard({ auth, data }) {
                                 </div>
                             </div>
                             <div>
-                                <div className="">
-                                    <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2">
-                                        <form onSubmit={handleSubmit}>
-                                            <TextInput className={'p-2'} placeholder="Search Location...." name={'city'}></TextInput>
-                                            <input type="submit" className="btn btn-outline-primary m-2" value="Get Weather"/>
-                                        </form>
-                                        <div>
-                                            Enter name above for your required location.
-                                        </div>
+
+                                <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2">
+                                    <form onSubmit={handleSubmit}>
+                                        <TextInput className={'p-2'} placeholder="Search Location...." name={'city'}></TextInput>
+                                        <input type="submit" className="btn btn-outline-primary m-2" value="Get Weather"/>
+                                    </form>
+                                    <div>
+                                        Enter name above for your required location.
+                                    </div>
+                                </div>
+
+                                <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg m-2 flex-wrap row">
+                                    <div className="col-sm">Receive daily email forecasts.</div>
+                                    <div className="col-sm">
+                                        <Checkbox checked={emailState} onChange={handleToggleEmail}></Checkbox>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-6">
+                        <div className="col-sm">
                             <div className="row p-2">
                                 {typeof weatherData.daily !== 'undefined' && dayList.length > 0 &&
                                     <Tabs defaultIndex={0} onSelect={(index, last, event ) => setTabIndex(event.target.value)}>
@@ -217,14 +223,8 @@ export default function Dashboard({ auth, data }) {
                             </div>
                         </div>
 
-                        <div className="border-gray-400 overflow-hidden shadow-sm sm:rounded-lg p-2 m-2 flex-wrap row col-12">
-                            <div className="col-6">Receive daily email forecasts.</div>
-                            <div className="col-6">
-                                <Checkbox checked={emailState} onChange={handleToggleEmail}></Checkbox>
-                            </div>
-                        </div>
-
                     </div>
+
                 </div>
 
             </div>
