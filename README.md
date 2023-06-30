@@ -24,7 +24,8 @@ I have taken an iterative approach to this project.  There is a huge amount that
 
 * **Phase 1:** Simple MVP application to cover specifications given.
 * **Phase 2:** Integrate Google Maps to allow selection of location by dropping a pin as another option.
-Improve text entry by adding dropdown of pre-filled city options and pass cords directly.  Implement restrictions on number of uses per user per day if required.
+Improve text entry by adding dropdown of pre-filled city options and pass cords directly.
+Implement restrictions on number of uses per user per day if required.
 Add ability to remove favourites.
 * **Phase 3:** Integrate Google Maps to show the weather graphically as well as in text format. 
 * **Phase 4?:** Probably find someone way more imaginative than me to create the front end properly :-) 
