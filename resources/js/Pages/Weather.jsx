@@ -10,7 +10,7 @@ import 'react-tabs/style/react-tabs.css';
 import WeatherDisplay from "@/Components/WeatherDisplay.jsx";
 
 
-export default function Dashboard({ auth, data }) {
+export default function Weather({ auth, data }) {
 
     const [weatherData, setWeatherData] = useState(data.weather)
     const [cityName, setCityName] = useState(data.locationName)

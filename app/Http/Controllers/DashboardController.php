@@ -21,13 +21,31 @@ class DashboardController extends Controller
         $preference = Preference::where('user_id', Auth::user()->id)->first();
         $email_state = isset($preference->data['daily_email']) && $preference->data['daily_email'] === 'true';
 
-        return Inertia::render('Dashboard',
+        return Inertia::render('Weather',
             [
                 'data' => [
                     'locationName' => $location_name,
                     'weather' => $weather,
                     'favouriteList' => Favourite::where('user_id', Auth::user()->id)->get(),
                     'emailState' => $email_state
+                ]
+            ]
+        );
+    }
+
+    public function skymaster()
+    {
+        $location = geoip(request()->ip());
+        $weather = Weather::getWeather($location->city);
+        $location_name = $location->city;
+
+        $preference = Preference::where('user_id', Auth::user()->id)->first();
+        $email_state = isset($preference->data['daily_email']) && $preference->data['daily_email'] === 'true';
+
+        return Inertia::render('Skymaster',
+            [
+                'data' => [
+
                 ]
             ]
         );

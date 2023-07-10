@@ -26,7 +26,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', [DashboardController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/weather', [DashboardController::class, 'show'])->middleware(['auth', 'verified'])->name('weather');
+Route::get('/skymaster', [DashboardController::class, 'skymaster'])->middleware(['auth', 'verified'])->name('skymaster');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
